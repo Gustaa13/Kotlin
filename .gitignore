@@ -1,0 +1,59 @@
+# -------------------------
+# Android Studio / Kotlin
+# -------------------------
+
+# Gradle
+.gradle/
+build/
+**/build/
+!gradle-wrapper.jar
+
+# IDE (Android Studio / IntelliJ)
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Configurações locais
+local.properties
+*.keystore
+*.jks
+*.hprof
+
+# Logs
+*.log
+
+# Cache
+.cxx/
+captures/
+.externalNativeBuild/
+.cache/
+*.lock
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Testes
+*.apk
+*.ap_
+*.dex
+*.class
+
+# Cobertura de código
+*.ec
+coverage/
+
+# NDK / CMake
+obj/
+*.so
+*.o
+*.a
+
+# Outros
+gen/
