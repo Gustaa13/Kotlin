@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginEnd="2dp">
 
             <EditText
                 android:id="@+id/timeA"
@@ -50,27 +51,37 @@
                 android:fontFamily="sans-serif"/>
 
             <LinearLayout
+                android:id="@+id/containerBotoesA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:gravity="center"
                 android:layout_marginTop="8dp">
 
                 <Button
                     android:id="@+id/tresPontosA"
                     style="@style/CustomButton"
+                    android:layout_width="100dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="+3"
                     android:background="@drawable/rounded_button_time_a"/>
 
                 <Button
                     android:id="@+id/doisPontosA"
                     style="@style/CustomButton"
+                    android:layout_width="100dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="+2"
                     android:background="@drawable/rounded_button_time_a"/>
 
                 <Button
                     android:id="@+id/tiroLivreA"
                     style="@style/CustomButton"
+                    android:layout_width="100dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="Tiro Livre"
                     android:background="@drawable/rounded_button_time_a"/>
             </LinearLayout>
@@ -83,7 +94,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginStart="2dp">
 
             <EditText
                 android:id="@+id/timeB"
@@ -117,27 +129,37 @@
                 android:fontFamily="sans-serif"/>
 
             <LinearLayout
+                android:id="@+id/containerBotoesB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:gravity="center"
                 android:layout_marginTop="8dp">
 
                 <Button
                     android:id="@+id/tresPontosB"
                     style="@style/CustomButton"
+                    android:layout_width="100dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="+3"
                     android:background="@drawable/rounded_button_time_b"/>
 
                 <Button
                     android:id="@+id/doisPontosB"
                     style="@style/CustomButton"
+                    android:layout_width="100dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="+2"
                     android:background="@drawable/rounded_button_time_b"/>
 
                 <Button
                     android:id="@+id/tiroLivreB"
                     style="@style/CustomButton"
+                    android:layout_width="100dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="Tiro Livre"
                     android:background="@drawable/rounded_button_time_b"/>
             </LinearLayout>
