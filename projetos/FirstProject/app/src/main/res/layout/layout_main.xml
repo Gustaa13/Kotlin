@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
     tools:context="com.seu.pacote">
 
     <LinearLayout
@@ -23,6 +24,7 @@
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="Time A"
+                android:textFontWeight="1000"
                 android:textSize="14sp"
                 android:fontFamily="sans-serif"/>
 
@@ -39,21 +41,21 @@
             <Button
                 android:id="@+id/tresPontosA"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
-                android:text="+3 PONTOS" />
+                android:text="+3" />
 
             <Button
                 android:id="@+id/doisPontosA"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
-                android:text="+2 PONTOS" />
+                android:text="+2" />
 
             <Button
                 android:id="@+id/tiroLivreA"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:text="Tiro Livre" />
         </LinearLayout>
@@ -77,6 +79,7 @@
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="Time B"
+                android:textFontWeight="1000"
                 android:textSize="14sp"
                 android:fontFamily="sans-serif"/>
 
@@ -93,21 +96,21 @@
             <Button
                 android:id="@+id/tresPontosB"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
-                android:text="+3 PONTOS" />
+                android:text="+3" />
 
             <Button
                 android:id="@+id/doisPontosB"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
-                android:text="+2 PONTOS" />
+                android:text="+2" />
 
             <Button
                 android:id="@+id/tiroLivreB"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:text="Tiro Livre" />
         </LinearLayout>
