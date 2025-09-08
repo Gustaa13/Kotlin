@@ -1,5 +1,5 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/timeA">
+    android:color="@color/rippleReiniciar">
 
     <item>
         <shape android:shape="rectangle">
@@ -9,3 +9,4 @@
     </item>
 
 </ripple>
+
