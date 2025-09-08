@@ -52,15 +52,12 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun animarPlacar(view: TextView, novoValor: Int) {
-        // Anima metade da rotação
         view.animate()
-            .rotationX(90f) // gira até metade
-            .setDuration(150) // velocidade
+            .rotationX(90f)
+            .setDuration(150)
             .withEndAction {
-                // Atualiza o texto no meio da animação
                 view.text = novoValor.toString()
 
-                // Continua a rotação até 0 (completa o flip)
                 view.rotationX = -90f
                 view.animate()
                     .rotationX(0f)
