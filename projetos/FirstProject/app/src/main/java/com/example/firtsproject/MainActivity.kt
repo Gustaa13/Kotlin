@@ -51,11 +51,29 @@ class MainActivity : ComponentActivity() {
         atualizarPlacar(time)
     }
 
+    private fun animarPlacar(view: TextView, novoValor: Int) {
+        // Anima metade da rotação
+        view.animate()
+            .rotationX(90f) // gira até metade
+            .setDuration(150) // velocidade
+            .withEndAction {
+                // Atualiza o texto no meio da animação
+                view.text = novoValor.toString()
+
+                // Continua a rotação até 0 (completa o flip)
+                view.rotationX = -90f
+                view.animate()
+                    .rotationX(0f)
+                    .setDuration(150)
+                    .start()
+            }.start()
+    }
+
     fun atualizarPlacar(time: String){
         if (time == "A") {
-            pTimeA.setText(pontuacaoTimeA.toString())
+            animarPlacar(pTimeA, pontuacaoTimeA)
         } else {
-            pTimeB.setText(pontuacaoTimeB.toString())
+            animarPlacar(pTimeB, pontuacaoTimeB)
         }
     }
 

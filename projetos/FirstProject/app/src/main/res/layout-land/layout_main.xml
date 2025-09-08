@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginEnd="2dp">
 
             <EditText
                 android:id="@+id/timeA"
@@ -42,35 +43,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="8dp"
                 android:text="0"
                 android:textColor="@color/timeA"
-                android:textSize="54sp"
+                android:textSize="46sp"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif"/>
 
             <LinearLayout
+                android:id="@+id/containerBotoesA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:gravity="center"
                 android:layout_marginTop="8dp">
 
                 <Button
                     android:id="@+id/tresPontosA"
                     style="@style/CustomButton"
+                    android:layout_width="70dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="+3"
                     android:background="@drawable/rounded_button_time_a"/>
 
                 <Button
                     android:id="@+id/doisPontosA"
                     style="@style/CustomButton"
+                    android:layout_width="70dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="+2"
                     android:background="@drawable/rounded_button_time_a"/>
 
                 <Button
                     android:id="@+id/tiroLivreA"
                     style="@style/CustomButton"
+                    android:layout_width="70dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="Tiro Livre"
                     android:background="@drawable/rounded_button_time_a"/>
             </LinearLayout>
@@ -83,7 +93,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginStart="2dp">
 
             <EditText
                 android:id="@+id/timeB"
@@ -109,35 +120,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="8dp"
                 android:text="0"
                 android:textColor="@color/timeB"
-                android:textSize="54sp"
+                android:textSize="46sp"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif"/>
 
             <LinearLayout
+                android:id="@+id/containerBotoesB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:gravity="center"
                 android:layout_marginTop="8dp">
 
                 <Button
                     android:id="@+id/tresPontosB"
                     style="@style/CustomButton"
+                    android:layout_width="70dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="+3"
                     android:background="@drawable/rounded_button_time_b"/>
 
                 <Button
                     android:id="@+id/doisPontosB"
                     style="@style/CustomButton"
+                    android:layout_width="70dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="+2"
                     android:background="@drawable/rounded_button_time_b"/>
 
                 <Button
                     android:id="@+id/tiroLivreB"
                     style="@style/CustomButton"
+                    android:layout_width="70dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="Tiro Livre"
                     android:background="@drawable/rounded_button_time_b"/>
             </LinearLayout>
@@ -152,8 +172,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/reiniciarPartida"
         android:layout_alignParentBottom="true"
-        android:layout_margin="24dp"
-        android:padding="12dp"
         android:textStyle="bold"
         android:fontFamily="sans-serif"
 
