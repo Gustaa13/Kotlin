@@ -1,9 +1,9 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/timeB">
+    android:color="@color/rippleReiniciar">
 
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/botaoTimeB"/>
+            <solid android:color="@color/reiniciarPartida"/>
             <corners android:radius="20dp"/>
         </shape>
     </item>
