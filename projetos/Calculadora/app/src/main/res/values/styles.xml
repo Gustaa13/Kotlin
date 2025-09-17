@@ -6,6 +6,7 @@
         <item name="android:layout_columnWeight">1</item>
         <item name="android:textSize">24sp</item>
         <item name="android:padding">8dp</item>
+        <item name="android:elevation">10dp</item>
     </style>
 
     <style name="NumberButtonStyle" parent="CalcButtonStyle">

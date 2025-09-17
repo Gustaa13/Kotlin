@@ -40,7 +40,7 @@
         android:id="@+id/gridButtons"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:rowCount="8"
+        android:rowCount="6"
         android:columnCount="4"
         android:alignmentMode="alignMargins"
         android:useDefaultMargins="true"
@@ -50,20 +50,22 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <!-- Linha 1 -->
-        <View style="@style/emptyView">
-        </View>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnClear"
             style="@style/CalcButtonStyle"
-            android:text="C" />
+            android:text="AC" />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBackspace"
             style="@style/CalcButtonStyle"
             android:text="⌫" />
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDividir"
+            android:id="@+id/btnInicioParenteses"
             style="@style/CalcButtonStyle"
-            android:text="÷" />
+            android:text="(" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFimParenteses"
+            style="@style/CalcButtonStyle"
+            android:text=")" />
 
         <!-- Linha 2 -->
         <com.google.android.material.button.MaterialButton
@@ -79,9 +81,9 @@
             style="@style/NumberButtonStyle"
             android:text="9" />
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMultiplicar"
+            android:id="@+id/btnDividir"
             style="@style/CalcButtonStyle"
-            android:text="×" />
+            android:text="÷" />
 
 
         <!-- Linha 3 -->
@@ -98,9 +100,9 @@
             style="@style/NumberButtonStyle"
             android:text="6" />
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSubtrair"
+            android:id="@+id/btnMultiplicar"
             style="@style/CalcButtonStyle"
-            android:text="-" />
+            android:text="×" />
 
 
         <!-- Linha 4 -->
@@ -117,9 +119,9 @@
             style="@style/NumberButtonStyle"
             android:text="3" />
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSomar"
+            android:id="@+id/btnSubtrair"
             style="@style/CalcButtonStyle"
-            android:text="+" />
+            android:text="-" />
 
 
         <!-- Linha 5 -->
@@ -133,6 +135,23 @@
             android:id="@+id/btnPonto"
             style="@style/CalcButtonStyle"
             android:text="," />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSomar"
+            style="@style/CalcButtonStyle"
+            android:text="+" />
+
+
+
+
+
+
+
+        <View style="@style/emptyView">
+        </View>
+        <View style="@style/emptyView">
+        </View>
+        <View style="@style/emptyView">
+        </View>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnIgual"
             style="@style/CalcButtonStyle"
