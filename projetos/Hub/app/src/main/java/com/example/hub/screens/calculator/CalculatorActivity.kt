@@ -9,21 +9,13 @@ import com.example.hub.R
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.Locale
-import kotlin.apply
-import kotlin.collections.forEach
-import kotlin.isNaN
-import kotlin.text.contains
-import kotlin.text.dropLast
-import kotlin.text.isEmpty
-import kotlin.text.isNotEmpty
 import kotlin.text.replace
-import kotlin.text.toDoubleOrNull
-import kotlin.to
-import kotlin.toString
 
 class CalculatorActivity : AppCompatActivity() {
     private lateinit var tvDisplay: TextView
     private lateinit var PreviousCalculationDisplay: TextView
+
+    private var prevInput: String = ""
     private var currentInput: String = ""
     private var operand: Double? = null
     private var pendingOp: String? = null
@@ -61,7 +53,9 @@ class CalculatorActivity : AppCompatActivity() {
             "+" to R.id.btnSomar,
             "-" to R.id.btnSubtrair,
             "×" to R.id.btnMultiplicar,
-            "÷" to R.id.btnDividir
+            "÷" to R.id.btnDividir,
+            "(" to R.id.btnInicioParenteses,
+            ")" to R.id.btnFimParenteses
         )
         ops.forEach { (op, id) ->
             findViewById<Button>(id).setOnClickListener { onOperator(op) }
@@ -82,14 +76,16 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     private fun appendDigit(d: String) {
+
         if (justCalculated) justCalculated = false
-        if (d == "," && currentInput.contains(",")) return
+//      if (d == "," && currentInput.contains(",")) return
         currentInput += d
         updateDisplay()
     }
 
     private fun onOperator(op: String) {
-        if (currentInput.isNotEmpty()) {
+        appendDigit(op)
+        /*if (currentInput.isNotEmpty()) {
             val value = stringToDoubleConverter(currentInput)
             if (value != null) {
                 if (operand == null) operand = value
@@ -98,19 +94,20 @@ class CalculatorActivity : AppCompatActivity() {
             currentInput = ""
         }
         pendingOp = op
-        updateDisplay()
+        updateDisplay()*/
     }
 
     private fun onEquals() {
-        if (operand != null && currentInput.isNotEmpty()) {
-            val value = stringToDoubleConverter(currentInput) ?: return
-            val result = performOperation(operand!!, value, pendingOp)
-            operand = null
-            pendingOp = null
-            justCalculated = true
-            currentInput = formatNumberInput(result.toString())
-            updateDisplay()
-        }
+        prevInput = currentInput
+        currentInput = currentInput
+            .replace("×", "*")
+            .replace("÷", "/")
+            .replace(",", ".")
+
+        currentInput = SimpleMathEvaluator.eval(currentInput)
+            .toString()
+            .replace(".", ",")
+        updateDisplay()
     }
 
     private fun performOperation(a: Double, b: Double, op: String?): Double {
@@ -141,6 +138,7 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     private fun updateDisplay() {
+        PreviousCalculationDisplay.text = prevInput
         tvDisplay.text = when {
             currentInput.isNotEmpty() && !justCalculated -> formatNumberInput(currentInput)
             currentInput.isNotEmpty() && justCalculated -> currentInput
@@ -148,8 +146,6 @@ class CalculatorActivity : AppCompatActivity() {
             operand != null -> formatNumberInput(operand.toString())
             else -> ""
         }
-        PreviousCalculationDisplay.text = if (operand != null && pendingOp != null)
-            formatNumberInput(operand.toString()) + " " + pendingOp else ""
     }
 
     private fun formatNumberInput(input: String): String {
