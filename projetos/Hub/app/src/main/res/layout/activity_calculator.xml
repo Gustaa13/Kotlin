@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="30dp">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnVoltar"
         style="?attr/materialIconButtonStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_height="50dp"
+        android:gravity="end"
         app:icon="@drawable/ic_arrow_back"
         app:iconSize="24dp"
         app:iconTint="@color/black"
@@ -22,13 +22,12 @@
     <TextView
         android:id="@+id/txtContaAnterior"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:gravity="end"
         android:padding="8dp"
         android:text=""
         android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

@@ -38,6 +38,7 @@ android {
         compose = true
         viewBinding = true
     }
+    buildToolsVersion = "30.0.3"
 }
 
 dependencies {

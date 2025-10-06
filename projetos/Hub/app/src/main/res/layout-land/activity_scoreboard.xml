@@ -91,23 +91,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/tresPontosA"
-                        style="@style/CustomButton"
+                        style="@style/LandCustomButton"
                         android:background="@drawable/rounded_button_time_a"
                         android:text="+3" />
 
                     <Button
                         android:id="@+id/doisPontosA"
-                        style="@style/CustomButton"
+                        style="@style/LandCustomButton"
                         android:background="@drawable/rounded_button_time_a"
                         android:text="+2" />
 
                     <Button
                         android:id="@+id/tiroLivreA"
-                        style="@style/CustomButton"
+                        style="@style/LandCustomButton"
                         android:background="@drawable/rounded_button_time_a"
                         android:text="Tiro Livre" />
                 </LinearLayout>
@@ -149,23 +149,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/tresPontosB"
-                        style="@style/CustomButton"
+                        style="@style/LandCustomButton"
                         android:background="@drawable/rounded_button_time_b"
                         android:text="+3" />
 
                     <Button
                         android:id="@+id/doisPontosB"
-                        style="@style/CustomButton"
+                        style="@style/LandCustomButton"
                         android:background="@drawable/rounded_button_time_b"
                         android:text="+2" />
 
                     <Button
                         android:id="@+id/tiroLivreB"
-                        style="@style/CustomButton"
+                        style="@style/LandCustomButton"
                         android:background="@drawable/rounded_button_time_b"
                         android:text="Tiro Livre" />
                 </LinearLayout>
