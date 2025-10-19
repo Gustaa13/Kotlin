@@ -6,6 +6,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hub.R
+import com.example.hub.utils.LogHelper
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.Locale
@@ -24,6 +25,8 @@ class CalculatorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
+
+        LogHelper.i("CalculatorActivity iniciada")
 
         // TextView de display
         tvDisplay = findViewById(R.id.txtResultado)
@@ -76,54 +79,42 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     private fun appendDigit(d: String) {
-
-        if (justCalculated) justCalculated = false
-//      if (d == "," && currentInput.contains(",")) return
+        LogHelper.v("appendDigit chamado com valor: $d")
+        if (justCalculated) {
+            LogHelper.d("Novo cálculo iniciado após resultado anterior")
+            justCalculated = false
+        }
         currentInput += d
         updateDisplay()
     }
 
     private fun onOperator(op: String) {
+        LogHelper.v("onOperator chamado com operador: $op")
         appendDigit(op)
-        /*if (currentInput.isNotEmpty()) {
-            val value = stringToDoubleConverter(currentInput)
-            if (value != null) {
-                if (operand == null) operand = value
-                else operand = performOperation(operand!!, value, pendingOp)
-            }
-            currentInput = ""
-        }
-        pendingOp = op
-        updateDisplay()*/
     }
 
     private fun onEquals() {
-        prevInput = currentInput
-        currentInput = currentInput
-            .replace("×", "*")
-            .replace("÷", "/")
-            .replace(",", ".")
+        LogHelper.i("Usuário pressionou '='. Expressão: $currentInput")
+        try {
+            prevInput = currentInput
+            currentInput = currentInput
+                .replace("×", "*")
+                .replace("÷", "/")
+                .replace(",", ".")
 
-        currentInput = SimpleMathEvaluator.eval(currentInput)
-            .toString()
-            .replace(".", ",")
+            currentInput = SimpleMathEvaluator.eval(currentInput)
+                .toString()
+                .replace(".", ",")
+
+            LogHelper.i("Resultado calculado com sucesso: $currentInput")
+        } catch (e: Exception) {
+            LogHelper.e("Erro ao calcular expressão: ${e.message}", e)
+        }
         updateDisplay()
     }
 
-    private fun performOperation(a: Double, b: Double, op: String?): Double {
-        return when (op) {
-            "+" -> a + b
-            "-" -> a - b
-            "×" -> a * b
-            "÷" -> if (b == 0.0) {
-                Toast.makeText(this, "Divisão por zero", Toast.LENGTH_SHORT).show()
-                a
-            } else a / b
-            else -> b
-        }
-    }
-
     private fun clearAll() {
+        LogHelper.i("Limpando todos os campos da calculadora")
         currentInput = ""
         operand = null
         pendingOp = null
@@ -131,6 +122,7 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     private fun backspace() {
+        LogHelper.v("Backspace pressionado")
         if (currentInput.isNotEmpty()) {
             currentInput = currentInput.dropLast(1)
             updateDisplay()
@@ -138,6 +130,7 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     private fun updateDisplay() {
+        LogHelper.v("Atualizando display: $currentInput")
         PreviousCalculationDisplay.text = prevInput
         tvDisplay.text = when {
             currentInput.isNotEmpty() && !justCalculated -> formatNumberInput(currentInput)
@@ -162,11 +155,8 @@ class CalculatorActivity : AppCompatActivity() {
         return formatter.format(value)
     }
 
-    private fun stringToDoubleConverter(s: String): Double? {
-        return s.replace(".", "").replace(",", ".").toDoubleOrNull()
-    }
-
     override fun onSaveInstanceState(outState: Bundle) {
+        LogHelper.d("Salvando estado da calculadora")
         super.onSaveInstanceState(outState)
         outState.putString("currentInput", currentInput)
         outState.putDouble("operand", operand ?: Double.NaN)
@@ -175,6 +165,7 @@ class CalculatorActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
+        LogHelper.d("Restaurando estado da calculadora")
         currentInput = savedInstanceState.getString("currentInput", "")
         val opnd = savedInstanceState.getDouble("operand", Double.NaN)
         operand = if (opnd.isNaN()) null else opnd

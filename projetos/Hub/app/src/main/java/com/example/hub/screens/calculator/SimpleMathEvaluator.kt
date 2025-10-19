@@ -1,8 +1,11 @@
 package com.example.hub.screens.calculator
+import com.example.hub.utils.LogHelper
 import java.util.Stack
 
 object SimpleMathEvaluator {
     fun eval(expression: String): Double {
+        LogHelper.d("Iniciando avaliação da expressão: $expression")
+
         val output = mutableListOf<String>()
         val operators = Stack<Char>()
         val tokens = tokenize(expression)
@@ -17,8 +20,12 @@ object SimpleMathEvaluator {
         // Shunting Yard Algorithm
         for (token in tokens) {
             when {
-                token.matches(Regex("\\d+(\\.\\d+)?")) -> output.add(token) // número
+                token.matches(Regex("\\d+(\\.\\d+)?")) -> {
+                    LogHelper.v("Token numérico detectado: $token")
+                    output.add(token) // número
+                }
                 token.length == 1 && token[0] in precedence -> {
+                    LogHelper.v("Operador encontrado: $token")
                     while (operators.isNotEmpty() &&
                         operators.peek() in precedence &&
                         precedence[operators.peek()]!! >= precedence[token[0]]!!
@@ -33,6 +40,7 @@ object SimpleMathEvaluator {
                         output.add(operators.pop().toString())
                     }
                     if (operators.isEmpty() || operators.pop() != '(') {
+                        LogHelper.e("Erro: Parênteses desbalanceados na expressão")
                         throw IllegalArgumentException("Parênteses desbalanceados")
                     }
                 }
@@ -40,7 +48,10 @@ object SimpleMathEvaluator {
         }
         while (operators.isNotEmpty()) {
             val op = operators.pop()
-            if (op == '(') throw IllegalArgumentException("Parênteses desbalanceados")
+            if (op == '(') {
+                LogHelper.e("Erro: Parênteses desbalanceados no final da expressão")
+                throw IllegalArgumentException("Parênteses desbalanceados")
+            }
             output.add(op.toString())
         }
 
@@ -56,21 +67,31 @@ object SimpleMathEvaluator {
                         '+' -> a + b
                         '-' -> a - b
                         '*' -> a * b
-                        '/' -> a / b
+                        '/' -> {
+                            if (b == 0.0) {
+                                LogHelper.w("Divisão por zero detectada durante avaliação")
+                                0.0
+                            } else a / b
+                        }
                         else -> throw IllegalArgumentException("Operador desconhecido: $token")
                     }
+                    LogHelper.v("Resultado parcial: $a ${token[0]} $b = $result")
                     stack.push(result)
                 }
             }
         }
 
-        return stack.pop()
+        val finalResult = stack.pop()
+        LogHelper.i("Expressão avaliada com sucesso. Resultado final: $finalResult")
+        return finalResult
     }
 
     private fun tokenize(expr: String): List<String> {
         val regex = Regex("\\d+(\\.\\d+)?|[()+\\-*/]")
-        return regex.findAll(expr.replace("\\s+".toRegex(), ""))
+        val tokens = regex.findAll(expr.replace("\\s+".toRegex(), ""))
             .map { it.value }
             .toList()
+        LogHelper.v("Tokens extraídos: $tokens")
+        return tokens
     }
 }
